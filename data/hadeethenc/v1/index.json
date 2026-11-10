@@ -1,0 +1,92 @@
+{
+ "schema": 1,
+ "generated": "2026-11-01T09:41:16.252Z",
+ "source": {
+  "name": "HadeethEnc.com",
+  "url": "https://hadeethenc.com",
+  "api_saved": "2026-11-01T08:53:13.451Z"
+ },
+ "languages": {
+  "ar": {
+   "version": "1.8.0",
+   "updated": "2026-10-14 00:00:55",
+   "count": 3582,
+   "categories": 493,
+   "file": "ar-1.8.0.json.gz",
+   "bytes": 2676942,
+   "sha256": "b9c87eeb2de3eef596f312a0bf195461e3e2356d326da027c878d895ea366f2f"
+  },
+  "ru": {
+   "version": "2.25.0",
+   "updated": "2026-06-20 17:20:24",
+   "count": 2249,
+   "categories": 446,
+   "file": "ru-2.25.0.json.gz",
+   "bytes": 3454076,
+   "sha256": "7d349ae4a4306f954ad3b9fa916a011f959790ec7ffdf0b4fcaf4e25c68d9f77"
+  },
+  "en": {
+   "version": "1.25.0",
+   "updated": "2026-05-10 17:43:35",
+   "count": 2328,
+   "categories": 452,
+   "file": "en-1.25.0.json.gz",
+   "bytes": 3156207,
+   "sha256": "f4c9770141be2c55c4270e06a6b85882022c146e7554e584e7d5fab5ac03bf9d"
+  },
+  "id": {
+   "version": "1.22.0",
+   "updated": "2026-05-10 17:47:10",
+   "count": 2260,
+   "categories": 447,
+   "file": "id-1.22.0.json.gz",
+   "bytes": 3034251,
+   "sha256": "ee17fd09b5544c90dad86893af5e7e5864488a32581b5e001954aac9bc308e09"
+  },
+  "ur": {
+   "version": "1.36.0",
+   "updated": "2026-05-25 14:39:55",
+   "count": 2220,
+   "categories": 445,
+   "file": "ur-1.36.0.json.gz",
+   "bytes": 3123874,
+   "sha256": "92da95262183aaf978d4e7341dc157890632483976d157c9a001539318994b3b"
+  },
+  "tr": {
+   "version": "1.71.0",
+   "updated": "2026-09-20 09:37:41",
+   "count": 2150,
+   "categories": 433,
+   "file": "tr-1.71.0.json.gz",
+   "bytes": 3034145,
+   "sha256": "0542135f930379774a8df62ca8946a32fe9186a1dc895c5ff4fed20039b7d324"
+  },
+  "bn": {
+   "version": "1.56.0",
+   "updated": "2026-06-12 05:38:36",
+   "count": 1925,
+   "categories": 414,
+   "file": "bn-1.56.0.json.gz",
+   "bytes": 2951143,
+   "sha256": "0d9b6625c8954732b94197d1990ee22e7c02bfd41e7b8bd217aaaedafc1fc977"
+  },
+  "ky": {
+   "version": "1.27.0",
+   "updated": "2026-05-10 17:49:46",
+   "count": 517,
+   "categories": 250,
+   "file": "ky-1.27.0.json.gz",
+   "bytes": 709172,
+   "sha256": "1f71f09744a56325622f2ecc576bcb1573c31aa19e26d56f80aab3fc98ec46d1"
+  },
+  "uz": {
+   "version": "1.20.0",
+   "updated": "2026-06-23 22:36:19",
+   "count": 420,
+   "categories": 230,
+   "file": "uz-1.20.0.json.gz",
+   "bytes": 549079,
+   "sha256": "676702affd35d8591b1b7c53b6580b1ce52684b9889a5369d806b9fe902b6571"
+  }
+ }
+}

@@ -1,0 +1,28 @@
+# После каждого изменения main просит закрытый сборщик (eazamat-it/juma-site-builder)
+# пересобрать сайт: сборщик добавляет страницы городов и расписания и выкладывает
+# всё в ветку gh-pages, откуда работает amalsawab.com.
+# Нужен секрет BUILDER_TOKEN: токен с правом Contents: Read and write на juma-site-builder.
+name: Notify builder
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger site build
+        env:
+          TOKEN: ${{ secrets.BUILDER_TOKEN }}
+        run: |
+          test -n "$TOKEN" || { echo "Нет секрета BUILDER_TOKEN — сайт обновится при плановой сборке (дважды в день)"; exit 0; }
+          curl -fsS -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $TOKEN" \
+            https://api.github.com/repos/eazamat-it/juma-site-builder/dispatches \
+            -d '{"event_type":"site-updated"}'
