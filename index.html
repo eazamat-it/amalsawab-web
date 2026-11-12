@@ -94,6 +94,10 @@ section{padding:30px 0 10px}
 .f span{color:var(--muted);font-size:14px}
 .cta{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:linear-gradient(135deg,rgba(63,182,139,.18),rgba(216,180,106,.12));border:1px solid rgba(216,180,106,.3);border-radius:22px;padding:24px;margin-top:26px}
 .cta .btn[aria-disabled=true]{opacity:.85;cursor:default}
+.hdr-right{display:flex;align-items:center;gap:10px}
+.hdr-play{padding:8px 13px;font-size:14px;border-radius:11px;white-space:nowrap}
+/* узкие телефоны: место для кнопки Google Play — название рядом с логотипом прячем (логотип остаётся) */
+@media (max-width:440px){.logo .brandtxt{display:none}.hdr-right{gap:8px}.hdr-play{padding:7px 11px;font-size:13px}}
 footer{border-top:1px solid var(--line);margin-top:34px;padding:22px 0 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px 24px;font-size:14px;color:var(--muted)}
 footer nav{display:flex;flex-wrap:wrap;gap:8px 18px}
 footer a{color:var(--muted)}
@@ -116,8 +120,8 @@ noscript .panel{margin-top:10px}
 <body>
 <div class="wrap">
   <header>
-    <a class="logo" href="/"><img src="assets/logo.png" width="34" height="34" alt="">AmalSawab</a>
-    <div class="langwrap"><button id="lang-btn" type="button" aria-haspopup="true">Русский</button><div id="lang-menu" hidden></div></div>
+    <a class="logo" href="/" aria-label="AmalSawab"><img src="assets/logo.png" width="34" height="34" alt=""><span class="brandtxt">AmalSawab</span></a>
+    <div class="hdr-right"><a class="btn hdr-play" dir="ltr" href="https://play.google.com/store/apps/details?id=com.jumaapp.namaz" rel="noopener" target="_blank" aria-label="Google Play">▶ Google Play</a><div class="langwrap"><button id="lang-btn" type="button" aria-haspopup="true">Русский</button><div id="lang-menu" hidden></div></div></div>
   </header>
 
   <div class="hero">
@@ -195,7 +199,7 @@ noscript .panel{margin-top:10px}
   <div class="cta">
     <div><div class="big" style="font-size:22px;direction:inherit" data-t="cta_t">Скачайте AmalSawab</div><div class="muted" data-t="cta_d"></div></div>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <span class="btn" aria-disabled="true">▶ Google Play · <span data-t="soon">скоро</span></span>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.jumaapp.namaz" rel="noopener" target="_blank">▶ <span data-t="get_play">Скачать в Google Play</span></a>
     </div>
   </div>
 
