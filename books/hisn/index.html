@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Хисн аль-Муслим — книги · AmalSawab</title>
+<meta name="description" content="«Хисн аль-Муслим» (Крепость мусульманина) — книги в PDF на языках приложения AmalSawab. Hisn al-Muslim books in PDF.">
+<link rel="stylesheet" href="../../style.css">
+<style>
+.book { background:var(--card); border-radius:14px; padding:16px 18px; margin:14px 0; }
+.book h3 { margin:0 0 4px; }
+.book .lng { color:var(--muted); font-size:13px; text-transform:uppercase; letter-spacing:.5px; }
+.btn { display:inline-block; margin-top:10px; padding:8px 14px; border-radius:10px; background:var(--accent); color:#06231a; font-weight:600; text-decoration:none; }
+[dir=rtl] { text-align:right; }
+:target { outline:2px solid var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="/">AmalSawab</a></nav>
+  <h1>«Хисн аль-Муслим» · Hisn al-Muslim</h1>
+  <p class="intro">Раздел «Крепость мусульманина» в приложении AmalSawab основан на книге «Хисн аль-Муслим» (составитель — д-р Саид ибн Али ибн Вахф аль-Кахтани). Ниже — сами книги в PDF на языках приложения.</p>
+  <p class="muted intro">The “Fortress of the Muslim” section of the AmalSawab app is based on the book Hisn al-Muslim by Dr. Sa'id ibn Ali ibn Wahf al-Qahtani. The books are provided below in PDF, unchanged.</p>
+
+  <div class="book" id="ar" dir="rtl" lang="ar"><div class="lng">العربية</div><h3>حصن المسلم من أذكار الكتاب والسنة</h3><div>سعيد بن علي بن وهف القحطاني</div><a class="btn" href="risala-ar-hisnulmuslim.pdf">PDF</a></div>
+  <div class="book" id="en" lang="en"><div class="lng">English</div><h3>Hisn Al-Muslim (Fortress of the Muslim)</h3><div>Dr. Sa'id ibn Ali ibn Wahf al-Qahtani</div><a class="btn" href="risala_en_hisnulmuslim.pdf">PDF</a></div>
+  <div class="book" id="ru" lang="ru"><div class="lng">Русский</div><h3>Молитвы из Корана и Сунны</h3><div>Саид аль-Кахтани</div><a class="btn" href="ru-fortress-invocations-book.pdf">PDF</a></div>
+  <div class="book" id="kk" lang="kk"><div class="lng">Қазақша</div><h3>Мұсылман қорғаны</h3><div>доктор Са’ид бин ‘Али бин Уаhф әл-Қахтани</div><a class="btn" href="kk_Musylman_Korgany.pdf">PDF</a></div>
+  <div class="book" id="uz" lang="uz"><div class="lng">Oʻzbekcha (кирилл)</div><h3>Мусулмон қўрғони</h3><div>Саид ибн Ваҳф ал-Қаҳтоний</div><a class="btn" href="uz-fortress.pdf">PDF</a></div>
+  <div class="book" id="ky" lang="ky"><div class="lng">Кыргызча</div><h3>Дуба — мусулмандын коргоону</h3><div>Саид аль-Кахтани</div><a class="btn" href="ky-hisn-almuslim.pdf">PDF</a><div class="muted" style="margin-top:6px">PDF сохранён из Word-файла книги, текст не изменён. · PDF saved from the book's Word file, text unchanged.</div></div>
+  <div class="book" id="tr" lang="tr"><div class="lng">Türkçe</div><h3>Hisnu'l-Muslim</h3><div>Dr. Saîd b. Ali b. Vehf el-Kahtânî</div><a class="btn" href="risala_tr-hisnul_muslim.pdf">PDF</a></div>
+  <div class="book" id="id" lang="id"><div class="lng">Bahasa Indonesia</div><h3>Ḥiṣnul Muslim</h3><div>Sa'id bin Ali bin Wahf Al-Qahthani</div><a class="btn" href="risala_id_hisnulmuslim.pdf">PDF</a></div>
+  <div class="book" id="bn" lang="bn"><div class="lng">বাংলা</div><h3>হিসনুল মুসলিম</h3><div>সাঈদ ইবনে আলী ইবনে ওয়াহফ আল-কাহতানী</div><a class="btn" href="risala_bn_hisn_almuslim.pdf">PDF</a></div>
+  <div class="book" id="ur" dir="rtl" lang="ur"><div class="lng">اردو</div><h3>حصن المسلم</h3><div>سعید بن علی بن وہف القحطانی</div><a class="btn" href="risala_ur_hisnul_muslim.pdf">PDF</a></div>
+
+  <hr>
+  <p class="intro">Нашли расхождение между приложением и книгой? Напишите нам: <a href="mailto:support@amalsawab.com?subject=Hisn%20al-Muslim">support@amalsawab.com</a></p>
+  <p class="muted intro">Found a difference between the app and the book? Write to us: <a href="mailto:support@amalsawab.com?subject=Hisn%20al-Muslim">support@amalsawab.com</a></p>
+</main>
+<script>
+// Из приложения страница открывается с #язык (например #ru): показываем только книгу
+// на этом языке. Без #язык (или с неизвестным) — показываем все книги.
+(function () {
+  var id = (location.hash || '').slice(1);
+  var el = id && document.getElementById(id);
+  if (!el || !el.classList.contains('book')) return;
+  document.querySelectorAll('.book').forEach(function (b) { if (b !== el) b.style.display = 'none'; });
+  document.querySelectorAll('.intro, hr').forEach(function (x) { x.style.display = 'none'; });
+  el.style.outline = 'none';
+})();
+</script>
+</body>
+</html>
