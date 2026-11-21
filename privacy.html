@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Политика конфиденциальности — AmalSawab</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <nav><a href="/">AmalSawab</a><a href="privacy.html">Политика конфиденциальности</a><a href="delete-account.html">Удаление данных</a></nav>
+
+  <h1>Политика конфиденциальности</h1>
+  <p class="muted">Приложение AmalSawab (ранее Juma App) (com.jumaapp.namaz). Действует с 16 октября 2026 г.</p>
+  <div class="lang"><a href="#ru">Русский</a><a href="#kk">Қазақша</a><a href="#en">English</a><a href="#uz">O‘zbekcha</a><a href="#ky">Кыргызча</a><a href="#ar">العربية</a><a href="#id">Bahasa Indonesia</a><a href="#ur">اردو</a><a href="#bn">বাংলা</a><a href="#tr">Türkçe</a></div>
+
+  <section id="ru">
+  <p>Мы собираем только то, что нужно для работы функций приложения. Мы не продаём данные, не показываем рекламу и не подключаем рекламную или аналитическую слежку. Анонимные отчёты об ошибках описаны ниже.</p>
+
+  <h2>1. Какие данные использует приложение</h2>
+  <p>Время намаза, азан, Кибла, Коран, зикры, дуа, халяль и пятничный раздел работают без регистрации.</p>
+
+  <h3>Местоположение</h3>
+  <ul>
+    <li>Нужно для расчёта времени намаза, направления Киблы и поиска ближайших мечетей. Можно не давать доступ и выбрать город вручную.</li>
+    <li>Координаты хранятся на телефоне. Для расчёта и определения названия города они отправляются в сервисы расчёта времени намаза (местных духовных управлений мусульман и AlAdhan), а также в Google Maps Geocoding и OpenStreetMap (Nominatim, Overpass). Эти сервисы получают координаты без вашего имени.</li>
+    <li>Раз в сутки приложение может в фоне обновить расписание уведомлений по текущему месту. Постоянного отслеживания нет, история перемещений не сохраняется.</li>
+  </ul>
+
+  <h3>Мечети рядом</h3>
+  <p>В разделе «Жума» приложение показывает ближайшие мечети. Поиск запускается только кнопкой «Найти мечети рядом». Приложение отправляет координаты, округлённые примерно до 100 метров, на наш сервер (Supabase), а он получает список мечетей из OpenStreetMap. Если наш сервер недоступен, телефон обращается к OpenStreetMap напрямую (overpass-api.de или резервный overpass.private.coffee). Ваши координаты в нашей базе не сохраняются и ни с кем не связываются — сохраняется только общедоступный список мечетей из OpenStreetMap, чтобы следующие поиски были быстрее. Кнопка «В путь» открывает Google Maps или 2ГИС на вашем телефоне, «Поделиться» — стандартное меню отправки; эти действия выполняете вы сами.</p>
+
+  <h3>Анонимные отчёты об ошибках</h3>
+  <p>Чтобы быстрее находить и исправлять сбои, приложение отправляет анонимные отчёты об ошибках через Firebase Crashlytics (Google): когда приложение аварийно закрывается или не срабатывает важная функция (например, не загрузилось время намаза или не запланировался азан). В отчёт входят: модель телефона, версия Android и приложения, случайный номер установки и короткое техническое описание ошибки. Координаты, имя, почта и ваши тексты в отчёты не попадают. Отчёты можно отключить: «Ещё → Настройки → О приложении → Отправлять анонимные отчёты об ошибках».</p>
+
+  <h3>Язык</h3>
+  <p>При первом запуске язык приложения выбирается по языку и региону, указанным в настройках телефона. Это определяется на самом телефоне и никуда не отправляется.</p>
+
+  <h3>Уведомления</h3>
+  <p>Уведомления о намазе и азан, пятничные напоминания (сура «Аль-Кахф», дуа) и напоминание о хутбе в Мекке и Медине планируются на самом телефоне и не требуют отправки данных на сервер. Пятничные напоминания и напоминание о хутбе можно отключить в «Настройках».</p>
+
+  <h3>Камера</h3>
+  <p>Камера используется в разделе «Халяль»: чтобы отсканировать штрих-код и — если вы сами добавляете новый продукт — чтобы сфотографировать упаковку. При сканировании изображение не сохраняется и не отправляется: для поиска продукта отправляется только номер штрих-кода — на наш сервер и в открытую базу Open Food Facts. Фото упаковки отправляется, только если вы сами прикрепили его к новому продукту (см. «Халяль» ниже).</p>
+
+  <h3>Халяль</h3>
+  <p>Если вы сами добавляете продукт или сообщение об ошибке, эти данные (название, состав, штрих-код, фото упаковки, текст сообщения) сохраняются в нашей базе и видны другим пользователям, кроме сообщений об ошибках. Новые продукты и сообщения передаются администраторам на проверку (уведомление в Telegram). Ваше имя к ним не привязывается.</p>
+  <p>Поиск по названию в списке проверенных продуктов: введённое название отправляется на наш сервер (Supabase) только для поиска и не сохраняется. Проверка состава по тексту и офлайн-проверка выполняются на самом телефоне — текст никуда не отправляется.</p>
+
+  <h3>Пятничная хутба</h3>
+  <p>В разделе «Жума» хутба и прямой эфир из Мекки показываются во встроенном плеере YouTube. Чтобы подобрать видео, приложение отправляет на наш сервер только язык приложения. Во время просмотра YouTube (Google) получает данные по своей политике конфиденциальности: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>. Плеер открывается только по вашему нажатию.</p>
+
+  <h3>Коран</h3>
+  <p>Текст, переводы, тафсир и аудио загружаются с сервисов quran.com, alquran.cloud, everyayah.com, quranenc.com и islamic.network. Им передаётся только номер суры или аята. Загруженное кэшируется на телефоне.</p>
+
+  <h3>Данные на телефоне</h3>
+  <p>Настройки, язык, тема, избранное и кэш хранятся только на телефоне и удаляются вместе с приложением.</p>
+
+  <h2>2. Где хранятся данные</h2>
+  <p>Наша база данных и серверные функции работают на платформе Supabase. Данные передаются по защищённому соединению (HTTPS).</p>
+
+  <h2>3. Удаление данных</h2>
+  <p>Аккаунтов в приложении нет. Данные на телефоне удаляются вместе с приложением. Чтобы удалить то, что вы сами отправили в раздел «Халяль», напишите на почту поддержки. Подробно — на странице <a href="delete-account.html">Удаление данных</a>.</p>
+
+  <h2>4. Изменения и контакты</h2>
+  <p>При изменении политики мы обновим эту страницу и дату вверху. Вопросы: <a href="mailto:support@amalsawab.com">support@amalsawab.com</a>.</p>
+  </section>
+
+  <hr>
+
+  <section id="kk" lang="kk">
+  <h1>Құпиялылық саясаты</h1>
+  <p class="muted">AmalSawab қосымшасы (бұрынғы атауы Juma App) (com.jumaapp.namaz). 2026 жылғы 16 қазаннан бастап күшінде.</p>
+  <p>Біз тек қосымша функцияларының жұмысына қажет деректерді ғана жинаймыз. Деректерді сатпаймыз, жарнама көрсетпейміз, жарнамалық немесе аналитикалық бақылау қоспаймыз. Анонимді қате есептері төменде сипатталған.</p>
+
+  <h2>1. Қосымша қандай деректерді пайдаланады</h2>
+  <p>Намаз уақыты, азан, құбыла, Құран, зікірлер, дұғалар, халал және жұма бөлімі тіркеусіз жұмыс істейді.</p>
+  <h3>Орналасқан жер</h3>
+  <ul>
+    <li>Намаз уақытын, құбыла бағытын есептеу және жақын мешіттерді іздеу үшін қажет. Рұқсат бермей, қаланы қолмен таңдауға болады.</li>
+    <li>Координаттар телефонда сақталады. Есептеу және қала атауын анықтау үшін олар намаз уақытын есептеу қызметтеріне (жергілікті мұсылмандар діни басқармалары және AlAdhan), сондай-ақ Google Maps Geocoding және OpenStreetMap (Nominatim, Overpass) қызметтеріне жіберіледі. Бұл қызметтер координаттарды атыңызсыз алады.</li>
+    <li>Тәулігіне бір рет қосымша фондық режимде хабарламалар кестесін қазіргі орын бойынша жаңартуы мүмкін. Тұрақты бақылау жоқ, жүріп-тұру тарихы сақталмайды.</li>
+  </ul>
+  <h3>Жақын мешіттер</h3>
+  <p>«Жұма» бөлімінде қосымша жақын мешіттерді көрсетеді. Іздеу тек «Жақын мешіттерді табу» батырмасымен басталады. Қосымша шамамен 100 метрге дейін дөңгелектенген координаттарды біздің серверге (Supabase) жібереді, ал ол мешіттер тізімін OpenStreetMap-тан алады. Біздің сервер қолжетімсіз болса, телефон OpenStreetMap-қа тікелей жүгінеді (overpass-api.de немесе резервтік overpass.private.coffee). Координаттарыңыз біздің базада сақталмайды және ешкіммен байланыстырылмайды — келесі іздеулер жылдамырақ болуы үшін OpenStreetMap-тағы жалпыға қолжетімді мешіттер тізімі ғана сақталады. «Жолға» батырмасы телефоныңызда Google Maps немесе 2ГИС ашады, «Бөлісу» — стандартты жіберу мәзірін; бұл әрекеттерді өзіңіз орындайсыз.</p>
+  <h3>Анонимді қате есептері</h3>
+  <p>Ақауларды тезірек тауып, түзету үшін қосымша Firebase Crashlytics (Google) арқылы анонимді қате есептерін жібереді: қосымша кенеттен жабылғанда немесе маңызды функция жұмыс істемей қалғанда (мысалы, намаз уақыты жүктелмесе немесе азан жоспарланбаса). Есепке телефон моделі, Android және қосымша нұсқасы, орнатудың кездейсоқ нөмірі және қатенің қысқа техникалық сипаттамасы кіреді. Координаттар, аты-жөніңіз, поштаңыз және мәтіндеріңіз есепке кірмейді. Есептерді өшіруге болады: «Көбірек → Параметрлер → Қолданба туралы → Қателер туралы анонимді есеп жіберу».</p>
+  <h3>Тіл</h3>
+  <p>Алғаш іске қосқанда қосымша тілі телефон баптауларындағы тіл мен аймаққа қарай таңдалады. Бұл телефонның өзінде анықталады және ешқайда жіберілмейді.</p>
+  <h3>Хабарламалар</h3>
+  <p>Намаз хабарламалары мен азан, жұма күнгі еске салғыштар («Кәһф» сүресі, дұға) және Мекке мен Мәдинадағы хұтба туралы еске салғыш телефонның өзінде жоспарланады және серверге дерек жіберуді қажет етпейді. Жұма күнгі еске салғыштарды және хұтба туралы еске салғышты «Параметрлер» бөлімінде өшіруге болады.</p>
+  <h3>Камера</h3>
+  <p>Камера «Халал» бөлімінде қолданылады: штрихкодты сканерлеу үшін және — жаңа өнімді өзіңіз қоссаңыз — қаптаманы суретке түсіру үшін. Сканерлеу кезінде сурет сақталмайды және жіберілмейді: өнімді іздеу үшін тек штрихкод нөмірі ғана біздің серверге және ашық Open Food Facts базасына жіберіледі. Қаптама суреті тек оны жаңа өнімге өзіңіз тіркесеңіз ғана жіберіледі (төмендегі «Халал» бөлімін қараңыз).</p>
+  <h3>Халал</h3>
+  <p>Өнімді немесе қате туралы хабарламаны өзіңіз қоссаңыз, бұл деректер (атауы, құрамы, штрихкод, қаптама суреті, хабарлама мәтіні) біздің базада сақталады және қате туралы хабарламалардан басқасы басқа пайдаланушыларға көрінеді. Жаңа өнімдер мен хабарламалар тексеру үшін әкімшілерге жіберіледі (Telegram-дағы хабарлама). Атыңыз оларға байланыстырылмайды.</p>
+  <p>Тексерілген өнімдер тізімінен атауы бойынша іздеу: енгізілген атау тек іздеу үшін біздің серверге (Supabase) жіберіледі және сақталмайды. Құрамды мәтін бойынша тексеру және офлайн тексеру телефонның өзінде орындалады — мәтін ешқайда жіберілмейді.</p>
+
+  <h3>Жұма уағызы</h3>
+  <p>«Жұма» бөлімінде уағыз бен Меккеден тікелей эфир кірістірілген YouTube ойнатқышында көрсетіледі. Бейнені таңдау үшін қосымша біздің серверге тек қосымшаның тілін жібереді. Көру кезінде YouTube (Google) деректерді өз құпиялылық саясатына сәйкес алады: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>. Ойнатқыш тек сіз басқанда ашылады.</p>
+  <h3>Құран</h3>
+  <p>Мәтін, аудармалар, тәпсір және аудио quran.com, alquran.cloud, everyayah.com, quranenc.com және islamic.network қызметтерінен жүктеледі. Оларға тек сүре немесе аят нөмірі беріледі. Жүктелгендер телефонда кэштеледі.</p>
+  <h3>Телефондағы деректер</h3>
+  <p>Баптаулар, тіл, тақырып, таңдаулылар және кэш тек телефонда сақталады және қосымшамен бірге жойылады.</p>
+
+  <h2>2. Деректер қайда сақталады</h2>
+  <p>Біздің дерекқор мен серверлік функциялар Supabase платформасында жұмыс істейді. Деректер қорғалған байланыс (HTTPS) арқылы беріледі.</p>
+  <h2>3. Деректерді жою</h2>
+  <p>Қосымшада аккаунттар жоқ. Телефондағы деректер қосымшамен бірге жойылады. «Халал» бөліміне өзіңіз жіберген деректерді жою үшін қолдау қызметінің поштасына жазыңыз. Толығырақ — <a href="delete-account.html#kk">Деректерді жою</a> бетінде.</p>
+  <h2>4. Өзгерістер және байланыс</h2>
+  <p>Саясат өзгерсе, біз осы бетті және жоғарыдағы күнді жаңартамыз. Сұрақтар: <a href="mailto:support@amalsawab.com">support@amalsawab.com</a>.</p>
+  </section>
+
+  <hr>
+
+  <section id="en" lang="en">
+  <h1>Privacy Policy</h1>
+  <p class="muted">AmalSawab, formerly Juma App (com.jumaapp.namaz). Effective 16 October 2026.</p>
+  <p>We collect only what is needed for the app's features to work. We do not sell data, show ads or use advertising or analytics tracking. Anonymous error reports are described below.</p>
+
+  <h2>1. What data the app uses</h2>
+  <p>Prayer times, adhan, Qibla, Quran, dhikr, duas, halal and the Friday section work without signing in.</p>
+  <h3>Location</h3>
+  <ul>
+    <li>Used to calculate prayer times, the Qibla direction, and to find nearby mosques. You can decline and choose a city manually.</li>
+    <li>Coordinates are stored on the phone. To calculate times and determine the city name they are sent to prayer-time services (local Muslim spiritual administrations and AlAdhan), Google Maps Geocoding and OpenStreetMap (Nominatim, Overpass). These services receive coordinates without your name.</li>
+    <li>Once a day the app may refresh the notification schedule in the background for your current location. There is no continuous tracking and no location history is kept.</li>
+  </ul>
+  <h3>Mosques nearby</h3>
+  <p>In the Juma section the app shows nearby mosques. The search runs only when you tap "Find mosques nearby". The app sends coordinates rounded to about 100 metres to our server (Supabase), which gets the list of mosques from OpenStreetMap. If our server is unavailable, the phone contacts OpenStreetMap directly (overpass-api.de or the backup overpass.private.coffee). Your coordinates are not saved in our database and are not linked to you — only the public list of mosques from OpenStreetMap is saved so that later searches are faster. "Directions" opens Google Maps or 2GIS on your phone and "Share" opens the standard share menu; you perform these actions yourself.</p>
+  <h3>Anonymous error reports</h3>
+  <p>To find and fix problems faster, the app sends anonymous error reports via Firebase Crashlytics (Google) when the app crashes or an important feature fails (for example, prayer times could not be loaded or the adhan could not be scheduled). A report contains the phone model, Android and app version, a random installation ID and a short technical description of the error. Location, name, email and your texts are never included. You can turn reports off: More → Settings → About app → Send anonymous error reports.</p>
+  <h3>Language</h3>
+  <p>On first launch the app language is chosen from the language and region set on your phone. This is determined on the phone and is not sent anywhere.</p>
+  <h3>Notifications</h3>
+  <p>Prayer notifications and the adhan, Friday reminders (Surah Al-Kahf, dua) and the Makkah and Madinah khutbah reminder are scheduled on the phone itself and do not require sending data to a server. Friday reminders and the khutbah reminder can be turned off in Settings.</p>
+  <h3>Camera</h3>
+  <p>The camera is used in the Halal section: to scan a barcode and — if you add a new product yourself — to take a photo of the package. When scanning, no image is saved or sent: only the barcode number is sent, to our server and to the open Open Food Facts database, to look the product up. A package photo is sent only if you attach it to a new product yourself (see "Halal" below).</p>
+  <h3>Halal</h3>
+  <p>If you add a product or an error report, that data (name, ingredients, barcode, package photo, report text) is stored in our database and is visible to other users, except error reports. New products and reports are forwarded to administrators for review (a Telegram notification). Your name is not attached to it.</p>
+  <p>Searching the list of verified products by name: the name you type is sent to our server (Supabase) only to run the search and is not stored. Checking ingredients by text and the offline check run on the phone itself — the text is not sent anywhere.</p>
+
+  <h3>Friday khutbah</h3>
+  <p>In the Friday section, the khutbah and the live broadcast from Makkah are shown in an embedded YouTube player. To choose the video, the app sends only the app language to our server. While you watch, YouTube (Google) receives data under its own privacy policy: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>. The player opens only when you tap it.</p>
+  <h3>Quran</h3>
+  <p>Text, translations, tafsir and audio are loaded from quran.com, alquran.cloud, everyayah.com, quranenc.com and islamic.network. Only the surah or ayah number is sent to them. Downloaded content is cached on the phone.</p>
+  <h3>Data on the phone</h3>
+  <p>Settings, language, theme, favourites and cache are stored only on the phone and are removed when you uninstall the app.</p>
+
+  <h2>2. Where data is stored</h2>
+  <p>Our database and server functions run on Supabase. Data is transmitted over a secure connection (HTTPS).</p>
+  <h2>3. Deleting your data</h2>
+  <p>The app has no accounts. Data on the phone is removed when you uninstall the app. To delete what you sent to the Halal section yourself, email support. Details: <a href="delete-account.html#en">Delete your data</a>.</p>
+  <h2>4. Changes and contact</h2>
+  <p>If this policy changes, we will update this page and the date above. Questions: <a href="mailto:support@amalsawab.com">support@amalsawab.com</a>.</p>
+  </section>
+
+  <hr>
+
+  <section id="uz" lang="uz">
+  <h1>Maxfiylik siyosati</h1>
+  <p class="muted">AmalSawab ilovasi (avvalgi nomi Juma App) (com.jumaapp.namaz). 2026-yil 16-oktabrdan amal qiladi.</p>
+  <p>Biz faqat ilova funksiyalari ishlashi uchun zarur bo‘lgan ma’lumotlarni yig‘amiz. Ma’lumotlarni sotmaymiz, reklama ko‘rsatmaymiz va reklama yoki tahliliy kuzatuvni ulamaymiz. Anonim xato hisobotlari quyida tasvirlangan.</p>
+
+  <h2>1. Ilova qanday ma’lumotlardan foydalanadi</h2>
+  <p>Namoz vaqtlari, azon, qibla, Qur’on, zikrlar, duolar, halol va juma bo‘limi ro‘yxatdan o‘tmasdan ishlaydi.</p>
+  <h3>Joylashuv</h3>
+  <ul>
+    <li>Namoz vaqtlarini, qibla yo‘nalishini hisoblash va yaqin masjidlarni topish uchun kerak. Ruxsat bermasdan, shaharni qo‘lda tanlash mumkin.</li>
+    <li>Koordinatalar telefonda saqlanadi. Hisoblash va shahar nomini aniqlash uchun ular namoz vaqtini hisoblash xizmatlariga (mahalliy musulmonlar diniy idoralari va AlAdhan), shuningdek Google Maps Geocoding va OpenStreetMap (Nominatim, Overpass) xizmatlariga yuboriladi. Bu xizmatlar koordinatalarni ismingizsiz oladi.</li>
+    <li>Kuniga bir marta ilova fon rejimida bildirishnomalar jadvalini joriy joylashuv bo‘yicha yangilashi mumkin. Doimiy kuzatuv yo‘q, harakatlar tarixi saqlanmaydi.</li>
+  </ul>
+  <h3>Yaqin masjidlar</h3>
+  <p>«Juma» bo‘limida ilova yaqin masjidlarni ko‘rsatadi. Qidiruv faqat «Yaqin masjidlarni topish» tugmasi bilan boshlanadi. Ilova taxminan 100 metrgacha yaxlitlangan koordinatalarni bizning serverga (Supabase) yuboradi, u esa masjidlar ro‘yxatini OpenStreetMap’dan oladi. Agar serverimiz ishlamasa, telefon to‘g‘ridan-to‘g‘ri OpenStreetMap’ga murojaat qiladi (overpass-api.de yoki zaxira overpass.private.coffee). Koordinatalaringiz bizning bazada saqlanmaydi va hech kim bilan bog‘lanmaydi — keyingi qidiruvlar tezroq bo‘lishi uchun faqat OpenStreetMap’dagi ochiq masjidlar ro‘yxati saqlanadi. «Yo‘lga» tugmasi telefoningizda Google Maps yoki 2GIS’ni ochadi, «Ulashish» — standart yuborish menyusini; bu amallarni o‘zingiz bajarasiz.</p>
+  <h3>Anonim xato hisobotlari</h3>
+  <p>Nosozliklarni tezroq topish va tuzatish uchun ilova Firebase Crashlytics (Google) orqali anonim xato hisobotlarini yuboradi: ilova kutilmaganda yopilganda yoki muhim funksiya ishlamay qolganda (masalan, namoz vaqtlari yuklanmasa yoki azon rejalashtirilmasa). Hisobotga telefon modeli, Android va ilova versiyasi, o‘rnatishning tasodifiy raqami va xatoning qisqa texnik tavsifi kiradi. Koordinatalar, ism, pochta va matnlaringiz hisobotga kirmaydi. Hisobotlarni o‘chirish mumkin: «Ko‘proq → Sozlamalar → Ilova haqida → Xatolar haqida anonim hisobot yuborish».</p>
+  <h3>Til</h3>
+  <p>Birinchi ishga tushirishda ilova tili telefon sozlamalaridagi til va mintaqaga qarab tanlanadi. Bu telefonning o‘zida aniqlanadi va hech qayerga yuborilmaydi.</p>
+  <h3>Bildirishnomalar</h3>
+  <p>Namoz bildirishnomalari va azon, juma eslatmalari («Kahf» surasi, duo) hamda Makka va Madinadagi xutba eslatmasi telefonning o‘zida rejalashtiriladi va serverga ma’lumot yuborishni talab qilmaydi. Juma eslatmalari va xutba eslatmasini «Sozlamalar»da o‘chirish mumkin.</p>
+  <h3>Kamera</h3>
+  <p>Kamera «Halol» bo‘limida ishlatiladi: shtrix-kodni skanerlash uchun va — agar yangi mahsulotni o‘zingiz qo‘shsangiz — qadoqni suratga olish uchun. Skanerlashda tasvir saqlanmaydi va yuborilmaydi: mahsulotni qidirish uchun faqat shtrix-kod raqami bizning serverga va ochiq Open Food Facts bazasiga yuboriladi. Qadoq surati faqat uni yangi mahsulotga o‘zingiz biriktirsangiz yuboriladi (quyidagi «Halol» bo‘limiga qarang).</p>
+  <h3>Halol</h3>
+  <p>Agar mahsulot yoki xato haqida xabarni o‘zingiz qo‘shsangiz, bu ma’lumotlar (nomi, tarkibi, shtrix-kod, qadoq surati, xabar matni) bizning bazada saqlanadi va xato haqidagi xabarlardan tashqari boshqa foydalanuvchilarga ko‘rinadi. Yangi mahsulotlar va xabarlar tekshirish uchun ma’murlarga yuboriladi (Telegram’dagi xabarnoma). Ismingiz ularga bog‘lanmaydi.</p>
+  <p>Tekshirilgan mahsulotlar ro‘yxatidan nomi bo‘yicha qidirish: kiritilgan nom faqat qidiruv uchun serverimizga (Supabase) yuboriladi va saqlanmaydi. Tarkibni matn bo‘yicha tekshirish va oflayn tekshiruv telefonning o‘zida bajariladi — matn hech qayerga yuborilmaydi.</p>
+
+  <h3>Juma xutbasi</h3>
+  <p>«Juma» bo‘limida xutba va Makkadan jonli efir ilova ichidagi YouTube pleerida ko‘rsatiladi. Videoni tanlash uchun ilova serverimizga faqat ilova tilini yuboradi. Ko‘rish vaqtida YouTube (Google) ma’lumotlarni o‘z maxfiylik siyosatiga ko‘ra oladi: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>. Pleer faqat siz bosganingizda ochiladi.</p>
+  <h3>Qur’on</h3>
+  <p>Matn, tarjimalar, tafsir va audio quran.com, alquran.cloud, everyayah.com, quranenc.com va islamic.network xizmatlaridan yuklanadi. Ularga faqat sura yoki oyat raqami uzatiladi. Yuklangan narsalar telefonda keshlanadi.</p>
+  <h3>Telefondagi ma’lumotlar</h3>
+  <p>Sozlamalar, til, mavzu, saralanganlar va kesh faqat telefonda saqlanadi va ilova bilan birga o‘chiriladi.</p>
+
+  <h2>2. Ma’lumotlar qayerda saqlanadi</h2>
+  <p>Bizning ma’lumotlar bazamiz va server funksiyalari Supabase platformasida ishlaydi. Ma’lumotlar himoyalangan ulanish (HTTPS) orqali uzatiladi.</p>
+  <h2>3. Ma’lumotlarni o‘chirish</h2>
+  <p>Ilovada akkauntlar yo‘q. Telefondagi ma’lumotlar ilova bilan birga o‘chiriladi. «Halol» bo‘limiga o‘zingiz yuborgan ma’lumotlarni o‘chirish uchun qo‘llab-quvvatlash pochtasiga yozing. Batafsil — <a href="delete-account.html#uz">Ma’lumotlarni o‘chirish</a> sahifasida.</p>
+  <h2>4. O‘zgarishlar va aloqa</h2>
+  <p>Siyosat o‘zgarsa, biz ushbu sahifani va yuqoridagi sanani yangilaymiz. Savollar: <a href="mailto:support@amalsawab.com">support@amalsawab.com</a>.</p>
+  </section>
+
+  <hr>
+
+  <section id="ky" lang="ky">
+  <h1>Купуялык саясаты</h1>
+  <p class="muted">AmalSawab тиркемеси (мурунку аты Juma App) (com.jumaapp.namaz). 2026-жылдын 16-октябрынан тартып күчүндө.</p>
+  <p>Биз тиркеменин функциялары иштеши үчүн керектүү маалыматты гана чогултабыз. Маалыматты сатпайбыз, жарнама көрсөтпөйбүз жана жарнамалык же аналитикалык көзөмөлдү туташтырбайбыз. Аноним ката отчеттору төмөндө сүрөттөлгөн.</p>
+
+  <h2>1. Тиркеме кандай маалыматты колдонот</h2>
+  <p>Намаз убактысы, азан, кыбыла, Куран, зикирлер, дубалар, халал жана жума бөлүмү каттоосуз иштейт.</p>
+  <h3>Жайгашкан жер</h3>
+  <ul>
+    <li>Намаз убактысын, кыбыла багытын эсептөө жана жакынкы мечиттерди издөө үчүн керек. Уруксат бербей, шаарды кол менен тандаса болот.</li>
+    <li>Координаттар телефондо сакталат. Эсептөө жана шаардын аталышын аныктоо үчүн алар намаз убактысын эсептөө кызматтарына (жергиликтүү мусулмандардын дин башкармалыктары жана AlAdhan), ошондой эле Google Maps Geocoding жана OpenStreetMap (Nominatim, Overpass) кызматтарына жөнөтүлөт. Бул кызматтар координаттарды атыңызсыз алат.</li>
+    <li>Суткасына бир жолу тиркеме фондо билдирмелер ырааттамасын учурдагы жер боюнча жаңырта алат. Туруктуу көзөмөл жок, жүрүү тарыхы сакталбайт.</li>
+  </ul>
+  <h3>Жакынкы мечиттер</h3>
+  <p>«Жума» бөлүмүндө тиркеме жакынкы мечиттерди көрсөтөт. Издөө «Жакынкы мечиттерди табуу» баскычы менен гана башталат. Тиркеме болжол менен 100 метрге чейин тегеректелген координаттарды биздин серверге (Supabase) жөнөтөт, ал эми ал мечиттердин тизмесин OpenStreetMap’тен алат. Биздин сервер иштебей калса, телефон OpenStreetMap’ке түздөн-түз кайрылат (overpass-api.de же запастагы overpass.private.coffee). Координаттарыңыз биздин базада сакталбайт жана эч ким менен байланыштырылбайт — кийинки издөөлөр тезирээк болушу үчүн OpenStreetMap’теги жалпыга жеткиликтүү мечиттердин тизмеси гана сакталат. «Жолго» баскычы телефонуңузда Google Maps же 2ГИСти ачат, «Бөлүшүү» — стандарттуу жөнөтүү менюсун; бул аракеттерди өзүңүз аткарасыз.</p>
+  <h3>Аноним ката отчеттору</h3>
+  <p>Ката-кемчиликтерди тезирээк таап, оңдоо үчүн тиркеме Firebase Crashlytics (Google) аркылуу аноним ката отчетторун жөнөтөт: тиркеме күтүлбөгөн жерден жабылганда же маанилүү функция иштебей калганда (мисалы, намаз убактысы жүктөлбөсө же азан пландалбаса). Отчетко телефондун модели, Android жана тиркеменин версиясы, орнотуунун кокустук номери жана катанын кыскача техникалык сүрөттөмөсү кирет. Координаттар, атыңыз, почтаңыз жана тексттериңиз отчетко кирбейт. Отчетторду өчүрсө болот: «Дагы → Жөндөөлөр → Колдонмо жөнүндө → Каталар тууралуу аноним отчет жөнөтүү».</p>
+  <h3>Тил</h3>
+  <p>Биринчи жолу ишке киргизгенде тиркеменин тили телефондун жөндөөлөрүндөгү тил жана аймак боюнча тандалат. Бул телефондун өзүндө аныкталат жана эч жакка жөнөтүлбөйт.</p>
+  <h3>Билдирмелер</h3>
+  <p>Намаз билдирмелери жана азан, жума эскертмелери («Кахф» сүрөсү, дуба) жана Мекке менен Мединадагы хутба тууралуу эскертме телефондун өзүндө пландалат жана серверге маалымат жөнөтүүнү талап кылбайт. Жума эскертмелерин жана хутба эскертмесин «Жөндөөлөрдөн» өчүрсө болот.</p>
+  <h3>Камера</h3>
+  <p>Камера «Халал» бөлүмүндө колдонулат: штрихкодду сканерлөө үчүн жана — жаңы продуктту өзүңүз кошсоңуз — таңгакты сүрөткө тартуу үчүн. Сканерлөөдө сүрөт сакталбайт жана жөнөтүлбөйт: продуктту издөө үчүн штрихкоддун номери гана биздин серверге жана ачык Open Food Facts базасына жөнөтүлөт. Таңгактын сүрөтү аны жаңы продуктка өзүңүз тиркесеңиз гана жөнөтүлөт (төмөндөгү «Халал» бөлүмүн караңыз).</p>
+  <h3>Халал</h3>
+  <p>Продуктту же ката тууралуу билдирүүнү өзүңүз кошсоңуз, бул маалымат (аталышы, курамы, штрихкод, таңгактын сүрөтү, билдирүүнүн тексти) биздин базада сакталат жана ката тууралуу билдирүүлөрдөн башкасы башка колдонуучуларга көрүнөт. Жаңы продуктулар жана билдирүүлөр текшерүү үчүн администраторлорго жөнөтүлөт (Telegram’дагы билдирме). Атыңыз аларга байланыштырылбайт.</p>
+  <p>Текшерилген азыктардын тизмесинен аталышы боюнча издөө: киргизилген аталыш издөө үчүн гана биздин серверге (Supabase) жөнөтүлөт жана сакталбайт. Курамды текст боюнча текшерүү жана офлайн текшерүү телефондун өзүндө аткарылат — текст эч жакка жөнөтүлбөйт.</p>
+
+  <h3>Жума хутбасы</h3>
+  <p>«Жума» бөлүмүндө хутба жана Меккеден түз эфир тиркеменин ичиндеги YouTube ойноткучунда көрсөтүлөт. Видеону тандоо үчүн тиркеме биздин серверге тиркеменин тилин гана жөнөтөт. Көрүп жатканда YouTube (Google) маалыматты өзүнүн купуялык саясаты боюнча алат: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>. Ойноткуч сиз басканда гана ачылат.</p>
+  <h3>Куран</h3>
+  <p>Текст, котормолор, тафсир жана аудио quran.com, alquran.cloud, everyayah.com, quranenc.com жана islamic.network кызматтарынан жүктөлөт. Аларга сүрөнүн же аяттын номери гана берилет. Жүктөлгөндөр телефондо кэштелет.</p>
+  <h3>Телефондогу маалымат</h3>
+  <p>Жөндөөлөр, тил, тема, тандалгандар жана кэш телефондо гана сакталат жана тиркеме менен кошо өчүрүлөт.</p>
+
+  <h2>2. Маалымат кайда сакталат</h2>
+  <p>Биздин маалымат базабыз жана сервердик функциялар Supabase платформасында иштейт. Маалымат корголгон байланыш (HTTPS) аркылуу берилет.</p>
+  <h2>3. Маалыматты өчүрүү</h2>
+  <p>Тиркемеде аккаунттар жок. Телефондогу маалымат тиркеме менен кошо өчүрүлөт. «Халал» бөлүмүнө өзүңүз жөнөткөн маалыматты өчүрүү үчүн колдоо кызматынын почтасына жазыңыз. Толугураак — <a href="delete-account.html#ky">Маалыматты өчүрүү</a> барагында.</p>
+  <h2>4. Өзгөрүүлөр жана байланыш</h2>
+  <p>Саясат өзгөрсө, биз бул баракты жана жогорудагы датаны жаңыртабыз. Суроолор: <a href="mailto:support@amalsawab.com">support@amalsawab.com</a>.</p>
+  </section>
+
+  <hr>
+
+  <section id="ar" lang="ar" dir="rtl">
+  <h1>سياسة الخصوصية</h1>
+  <p class="muted">تطبيق AmalSawab (سابقًا Juma App) ‏(com.jumaapp.namaz). سارية اعتبارًا من 16 أكتوبر 2026.</p>
+  <p>نجمع فقط ما يلزم لعمل ميزات التطبيق. لا نبيع البيانات، ولا نعرض إعلانات، ولا نستخدم أي تتبّع إعلاني أو تحليلي. تقارير الأخطاء المجهولة الهوية موضّحة أدناه.</p>
+
+  <h2>1. البيانات التي يستخدمها التطبيق</h2>
+  <p>مواقيت الصلاة والأذان والقبلة والقرآن والأذكار والأدعية والحلال وقسم الجمعة تعمل دون تسجيل.</p>
+  <h3>الموقع</h3>
+  <ul>
+    <li>يُستخدم لحساب مواقيت الصلاة واتجاه القبلة والبحث عن المساجد القريبة. يمكنك رفض الإذن واختيار المدينة يدويًا.</li>
+    <li>تُحفظ الإحداثيات على الهاتف. ولحساب المواقيت وتحديد اسم المدينة تُرسَل إلى خدمات حساب مواقيت الصلاة (الإدارات الدينية المحلية للمسلمين وAlAdhan)، وإلى Google Maps Geocoding وOpenStreetMap ‏(Nominatim وOverpass). تتلقى هذه الخدمات الإحداثيات دون اسمك.</li>
+    <li>قد يحدّث التطبيق مرة واحدة يوميًا في الخلفية جدول الإشعارات وفق موقعك الحالي. لا يوجد تتبّع مستمر، ولا يُحفظ سجل للتنقلات.</li>
+  </ul>
+  <h3>مساجد قريبة</h3>
+  <p>في قسم «الجمعة» يعرض التطبيق المساجد القريبة. لا يبدأ البحث إلا بالضغط على زر «ابحث عن مساجد قريبة». يرسل التطبيق إحداثيات مقرّبة إلى نحو 100 متر إلى خادمنا (Supabase)، الذي يجلب قائمة المساجد من OpenStreetMap. وإذا لم يكن خادمنا متاحًا، يتصل الهاتف بـ OpenStreetMap مباشرة (overpass-api.de أو الخادم الاحتياطي overpass.private.coffee). لا تُحفظ إحداثياتك في قاعدة بياناتنا ولا تُربط بك — تُحفظ فقط قائمة المساجد العامة من OpenStreetMap لتسريع عمليات البحث اللاحقة. يفتح زر «الاتجاهات» تطبيق Google Maps أو 2GIS على هاتفك، ويفتح زر «مشاركة» قائمة المشاركة المعتادة؛ وأنت من يقوم بهذه الإجراءات.</p>
+  <h3>تقارير الأخطاء المجهولة الهوية</h3>
+  <p>لاكتشاف الأعطال وإصلاحها بسرعة أكبر، يرسل التطبيق تقارير أخطاء مجهولة الهوية عبر Firebase Crashlytics ‏(Google) عندما يُغلق التطبيق فجأة أو تتعطل ميزة مهمة (مثل تعذّر تحميل مواقيت الصلاة أو جدولة الأذان). يتضمن التقرير طراز الهاتف وإصدار Android والتطبيق ورقمًا عشوائيًا للتثبيت ووصفًا تقنيًا قصيرًا للخطأ. لا تُضمَّن الإحداثيات ولا الاسم ولا البريد الإلكتروني ولا نصوصك. يمكن إيقاف التقارير: «المزيد ← الإعدادات ← حول التطبيق ← إرسال تقارير أخطاء مجهولة الهوية».</p>
+  <h3>اللغة</h3>
+  <p>عند التشغيل الأول تُختار لغة التطبيق وفق اللغة والمنطقة المحددتين في إعدادات الهاتف. يتم ذلك على الهاتف نفسه ولا يُرسَل إلى أي مكان.</p>
+  <h3>الإشعارات</h3>
+  <p>تُجدوَل إشعارات الصلاة والأذان وتذكيرات الجمعة (سورة الكهف والدعاء) وتذكير خطبة الجمعة في مكة المكرمة والمدينة المنورة على الهاتف نفسه، ولا تتطلب إرسال بيانات إلى خادم. يمكن إيقاف تذكيرات الجمعة وتذكير الخطبة من «الإعدادات».</p>
+  <h3>الكاميرا</h3>
+  <p>تُستخدم الكاميرا في قسم «حلال»: لمسح الرمز الشريطي، و— إذا أضفت منتجًا جديدًا بنفسك — لتصوير العبوة. عند المسح لا تُحفظ الصورة ولا تُرسَل: يُرسَل رقم الرمز الشريطي فقط إلى خادمنا وإلى قاعدة Open Food Facts المفتوحة للبحث عن المنتج. لا تُرسَل صورة العبوة إلا إذا أرفقتها بنفسك بمنتج جديد (انظر «حلال» أدناه).</p>
+  <h3>حلال</h3>
+  <p>إذا أضفت بنفسك منتجًا أو بلاغًا عن خطأ، تُحفظ هذه البيانات (الاسم والمكونات والرمز الشريطي وصورة العبوة ونص البلاغ) في قاعدة بياناتنا وتكون مرئية للمستخدمين الآخرين، باستثناء البلاغات. تُحال المنتجات الجديدة والبلاغات إلى المشرفين للمراجعة (إشعار عبر Telegram). لا يُربط اسمك بها.</p>
+  <p>البحث بالاسم في قائمة المنتجات المُتحقَّق منها: يُرسَل الاسم الذي تكتبه إلى خادمنا (Supabase) لإجراء البحث فقط ولا يُحفَظ. أما فحص المكوّنات بالنص والفحص دون اتصال فيتمّان على الهاتف نفسه، ولا يُرسَل النص إلى أي مكان.</p>
+
+  <h3>خطبة الجمعة</h3>
+  <p>في قسم «الجمعة» تُعرض الخطبة والبث المباشر من مكة عبر مشغّل يوتيوب مدمج في التطبيق. لاختيار المقطع يرسل التطبيق إلى خادمنا لغة التطبيق فقط. أثناء المشاهدة يتلقى يوتيوب (Google) بيانات وفق سياسة الخصوصية الخاصة به: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>. لا يُفتح المشغّل إلا عند ضغطك عليه.</p>
+  <h3>القرآن</h3>
+  <p>يُحمَّل النص والترجمات والتفسير والصوت من خدمات quran.com وalquran.cloud وeveryayah.com وquranenc.com وislamic.network. لا يُرسَل إليها إلا رقم السورة أو الآية. ويُخزَّن المحتوى المحمَّل مؤقتًا على الهاتف.</p>
+  <h3>البيانات على الهاتف</h3>
+  <p>تُحفظ الإعدادات واللغة والسمة والمفضلة والذاكرة المؤقتة على الهاتف فقط، وتُحذف مع حذف التطبيق.</p>
+
+  <h2>2. أين تُحفظ البيانات</h2>
+  <p>تعمل قاعدة بياناتنا ووظائف الخادم على منصة Supabase. تُنقل البيانات عبر اتصال آمن (HTTPS).</p>
+  <h2>3. حذف البيانات</h2>
+  <p>لا توجد حسابات في التطبيق. تُحذف البيانات الموجودة على الهاتف مع حذف التطبيق. لحذف ما أرسلته بنفسك إلى قسم «حلال»، راسل بريد الدعم. التفاصيل في صفحة <a href="delete-account.html#ar">حذف البيانات</a>.</p>
+  <h2>4. التغييرات والتواصل</h2>
+  <p>إذا تغيّرت هذه السياسة فسنحدّث هذه الصفحة والتاريخ أعلاه. للاستفسارات: <a href="mailto:support@amalsawab.com">support@amalsawab.com</a>.</p>
+  </section>
+
+  <hr>
+
+  <section id="id" lang="id">
+  <h1>Kebijakan Privasi</h1>
+  <p class="muted">Aplikasi AmalSawab (sebelumnya Juma App) (com.jumaapp.namaz). Berlaku sejak 16 Oktober 2026.</p>
+  <p>Kami hanya mengumpulkan apa yang diperlukan agar fitur aplikasi berfungsi. Kami tidak menjual data, tidak menampilkan iklan, dan tidak menggunakan pelacakan iklan atau analitik. Laporan kesalahan anonim dijelaskan di bawah.</p>
+
+  <h2>1. Data yang digunakan aplikasi</h2>
+  <p>Jadwal salat, azan, kiblat, Al-Qur’an, zikir, doa, halal, dan bagian Jumat berfungsi tanpa pendaftaran.</p>
+  <h3>Lokasi</h3>
+  <ul>
+    <li>Diperlukan untuk menghitung jadwal salat, arah kiblat, dan mencari masjid terdekat. Anda dapat menolak izin dan memilih kota secara manual.</li>
+    <li>Koordinat disimpan di ponsel. Untuk menghitung jadwal dan menentukan nama kota, koordinat dikirim ke layanan perhitungan jadwal salat (lembaga keagamaan Islam setempat dan AlAdhan), serta ke Google Maps Geocoding dan OpenStreetMap (Nominatim, Overpass). Layanan ini menerima koordinat tanpa nama Anda.</li>
+    <li>Sekali sehari aplikasi dapat memperbarui jadwal notifikasi di latar belakang sesuai lokasi Anda saat ini. Tidak ada pelacakan terus-menerus, dan riwayat perjalanan tidak disimpan.</li>
+  </ul>
+  <h3>Masjid terdekat</h3>
+  <p>Di bagian «Jumat», aplikasi menampilkan masjid terdekat. Pencarian hanya dimulai saat Anda menekan tombol «Cari masjid terdekat». Aplikasi mengirim koordinat yang dibulatkan hingga sekitar 100 meter ke server kami (Supabase), yang mengambil daftar masjid dari OpenStreetMap. Jika server kami tidak tersedia, ponsel menghubungi OpenStreetMap secara langsung (overpass-api.de atau cadangan overpass.private.coffee). Koordinat Anda tidak disimpan di basis data kami dan tidak dikaitkan dengan Anda — hanya daftar masjid publik dari OpenStreetMap yang disimpan agar pencarian berikutnya lebih cepat. Tombol «Rute» membuka Google Maps atau 2GIS di ponsel Anda, dan «Bagikan» membuka menu berbagi standar; tindakan ini Anda lakukan sendiri.</p>
+  <h3>Laporan kesalahan anonim</h3>
+  <p>Untuk menemukan dan memperbaiki masalah lebih cepat, aplikasi mengirim laporan kesalahan anonim melalui Firebase Crashlytics (Google) saat aplikasi tertutup tiba-tiba atau fitur penting gagal (misalnya jadwal salat tidak termuat atau azan tidak terjadwal). Laporan berisi model ponsel, versi Android dan aplikasi, nomor instalasi acak, dan deskripsi teknis singkat tentang kesalahan. Lokasi, nama, email, dan teks Anda tidak pernah disertakan. Laporan dapat dimatikan: «Lainnya → Pengaturan → Tentang aplikasi → Kirim laporan kesalahan anonim».</p>
+  <h3>Bahasa</h3>
+  <p>Saat pertama kali dibuka, bahasa aplikasi dipilih berdasarkan bahasa dan wilayah di pengaturan ponsel. Hal ini ditentukan di ponsel dan tidak dikirim ke mana pun.</p>
+  <h3>Notifikasi</h3>
+  <p>Notifikasi salat dan azan, pengingat Jumat (Surah Al-Kahfi, doa), dan pengingat khutbah di Makkah dan Madinah dijadwalkan di ponsel itu sendiri dan tidak memerlukan pengiriman data ke server. Pengingat Jumat dan pengingat khutbah dapat dimatikan di «Pengaturan».</p>
+  <h3>Kamera</h3>
+  <p>Kamera digunakan di bagian «Halal»: untuk memindai kode batang dan — jika Anda sendiri menambahkan produk baru — untuk memotret kemasan. Saat memindai, gambar tidak disimpan atau dikirim: hanya nomor kode batang yang dikirim ke server kami dan ke basis data terbuka Open Food Facts untuk mencari produk. Foto kemasan hanya dikirim jika Anda sendiri melampirkannya ke produk baru (lihat «Halal» di bawah).</p>
+  <h3>Halal</h3>
+  <p>Jika Anda sendiri menambahkan produk atau laporan kesalahan, data tersebut (nama, komposisi, kode batang, foto kemasan, teks laporan) disimpan di basis data kami dan dapat dilihat pengguna lain, kecuali laporan kesalahan. Produk baru dan laporan diteruskan ke administrator untuk ditinjau (notifikasi Telegram). Nama Anda tidak dikaitkan dengannya.</p>
+  <p>Pencarian nama di daftar produk terverifikasi: nama yang Anda ketik dikirim ke server kami (Supabase) hanya untuk pencarian dan tidak disimpan. Pemeriksaan komposisi dari teks dan pemeriksaan offline dilakukan di ponsel itu sendiri — teks tidak dikirim ke mana pun.</p>
+
+  <h3>Khutbah Jumat</h3>
+  <p>Di bagian «Jumat», khutbah dan siaran langsung dari Makkah ditampilkan melalui pemutar YouTube di dalam aplikasi. Untuk memilih video, aplikasi hanya mengirim bahasa aplikasi ke server kami. Saat Anda menonton, YouTube (Google) menerima data sesuai kebijakan privasinya sendiri: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>. Pemutar hanya terbuka saat Anda mengetuknya.</p>
+  <h3>Al-Qur’an</h3>
+  <p>Teks, terjemahan, tafsir, dan audio dimuat dari layanan quran.com, alquran.cloud, everyayah.com, quranenc.com, dan islamic.network. Hanya nomor surah atau ayat yang dikirim kepada mereka. Konten yang diunduh disimpan sementara di ponsel.</p>
+  <h3>Data di ponsel</h3>
+  <p>Pengaturan, bahasa, tema, favorit, dan cache hanya disimpan di ponsel dan dihapus bersama aplikasi.</p>
+
+  <h2>2. Tempat data disimpan</h2>
+  <p>Basis data dan fungsi server kami berjalan di platform Supabase. Data dikirim melalui koneksi aman (HTTPS).</p>
+  <h2>3. Menghapus data</h2>
+  <p>Aplikasi tidak memiliki akun. Data di ponsel dihapus bersama aplikasi. Untuk menghapus apa yang Anda kirim sendiri ke bagian «Halal», kirim email ke dukungan. Detail di halaman <a href="delete-account.html#id">Hapus data</a>.</p>
+  <h2>4. Perubahan dan kontak</h2>
+  <p>Jika kebijakan ini berubah, kami akan memperbarui halaman ini dan tanggal di atas. Pertanyaan: <a href="mailto:support@amalsawab.com">support@amalsawab.com</a>.</p>
+  </section>
+
+  <hr>
+
+  <section id="ur" lang="ur" dir="rtl">
+  <h1>رازداری کی پالیسی</h1>
+  <p class="muted">AmalSawab ایپ (سابقہ نام Juma App) (com.jumaapp.namaz)۔ 16 اکتوبر 2026 سے نافذ۔</p>
+  <p>ہم صرف وہی ڈیٹا جمع کرتے ہیں جو ایپ کی خصوصیات کے کام کرنے کے لیے ضروری ہے۔ ہم ڈیٹا فروخت نہیں کرتے، اشتہارات نہیں دکھاتے اور اشتہاری یا تجزیاتی ٹریکنگ استعمال نہیں کرتے۔ گمنام غلطی رپورٹوں کی تفصیل نیچے دی گئی ہے۔</p>
+
+  <h2>1. ایپ کون سا ڈیٹا استعمال کرتی ہے</h2>
+  <p>نماز کے اوقات، اذان، قبلہ، قرآن، اذکار، دعائیں، حلال اور جمعہ کا حصہ رجسٹریشن کے بغیر کام کرتے ہیں۔</p>
+  <h3>مقام</h3>
+  <ul>
+    <li>نماز کے اوقات، قبلہ کی سمت معلوم کرنے اور قریبی مساجد تلاش کرنے کے لیے ضروری ہے۔ آپ اجازت دیے بغیر شہر خود منتخب کر سکتے ہیں۔</li>
+    <li>کوآرڈینیٹس فون پر محفوظ رہتے ہیں۔ اوقات کے حساب اور شہر کا نام معلوم کرنے کے لیے انہیں نماز کے اوقات کی خدمات (مقامی مسلم دینی ادارے اور AlAdhan) کے ساتھ ساتھ Google Maps Geocoding اور OpenStreetMap (Nominatim، Overpass) کو بھیجا جاتا ہے۔ یہ خدمات کوآرڈینیٹس آپ کے نام کے بغیر وصول کرتی ہیں۔</li>
+    <li>دن میں ایک بار ایپ پس منظر میں موجودہ مقام کے مطابق اطلاعات کا شیڈول اپ ڈیٹ کر سکتی ہے۔ مسلسل نگرانی نہیں ہوتی اور نقل و حرکت کی تاریخ محفوظ نہیں کی جاتی۔</li>
+  </ul>
+  <h3>قریبی مساجد</h3>
+  <p>«جمعہ» کے حصے میں ایپ قریبی مساجد دکھاتی ہے۔ تلاش صرف «قریبی مساجد تلاش کریں» کا بٹن دبانے پر شروع ہوتی ہے۔ ایپ تقریباً 100 میٹر تک گول کیے گئے کوآرڈینیٹس ہمارے سرور (Supabase) کو بھیجتی ہے، جو مساجد کی فہرست OpenStreetMap سے حاصل کرتا ہے۔ اگر ہمارا سرور دستیاب نہ ہو تو فون براہ راست OpenStreetMap سے رابطہ کرتا ہے (overpass-api.de یا متبادل overpass.private.coffee)۔ آپ کے کوآرڈینیٹس ہمارے ڈیٹا بیس میں محفوظ نہیں ہوتے اور کسی سے منسلک نہیں کیے جاتے — صرف OpenStreetMap کی عوامی مساجد کی فہرست محفوظ کی جاتی ہے تاکہ اگلی تلاش تیز ہو۔ «راستہ» کا بٹن آپ کے فون پر Google Maps یا 2GIS کھولتا ہے، اور «شیئر کریں» معمول کا شیئرنگ مینو؛ یہ کام آپ خود کرتے ہیں۔</p>
+  <h3>گمنام غلطی رپورٹیں</h3>
+  <p>خرابیوں کو جلد تلاش اور درست کرنے کے لیے ایپ Firebase Crashlytics (Google) کے ذریعے گمنام غلطی رپورٹیں بھیجتی ہے: جب ایپ اچانک بند ہو جائے یا کوئی اہم خصوصیت کام نہ کرے (مثلاً نماز کے اوقات لوڈ نہ ہوں یا اذان شیڈول نہ ہو)۔ رپورٹ میں فون کا ماڈل، Android اور ایپ کا ورژن، انسٹالیشن کا ایک بے ترتیب نمبر اور غلطی کی مختصر تکنیکی تفصیل شامل ہوتی ہے۔ کوآرڈینیٹس، نام، ای میل اور آپ کی تحریریں رپورٹ میں شامل نہیں ہوتیں۔ رپورٹیں بند کی جا سکتی ہیں: «مزید ← ترتیبات ← ایپ کے بارے میں ← غلطیوں کی گمنام رپورٹیں بھیجیں»۔</p>
+  <h3>زبان</h3>
+  <p>پہلی بار کھولنے پر ایپ کی زبان فون کی ترتیبات میں درج زبان اور علاقے کے مطابق منتخب ہوتی ہے۔ یہ فون پر ہی طے ہوتا ہے اور کہیں نہیں بھیجا جاتا۔</p>
+  <h3>اطلاعات</h3>
+  <p>نماز کی اطلاعات اور اذان، جمعہ کی یاددہانیاں (سورۃ الکہف، دعا) اور مکہ و مدینہ میں جمعہ کے خطبے کی یاددہانی فون پر ہی شیڈول کی جاتی ہیں اور سرور کو ڈیٹا بھیجنے کی ضرورت نہیں ہوتی۔ جمعہ کی یاددہانیاں اور خطبے کی یاددہانی «ترتیبات» میں بند کی جا سکتی ہیں۔</p>
+  <h3>کیمرا</h3>
+  <p>کیمرا «حلال» کے حصے میں استعمال ہوتا ہے: بارکوڈ اسکین کرنے کے لیے اور — اگر آپ خود نئی پروڈکٹ شامل کریں — پیکنگ کی تصویر لینے کے لیے۔ اسکین کرتے وقت تصویر محفوظ یا ارسال نہیں کی جاتی: پروڈکٹ تلاش کرنے کے لیے صرف بارکوڈ نمبر ہمارے سرور اور کھلے ڈیٹا بیس Open Food Facts کو بھیجا جاتا ہے۔ پیکنگ کی تصویر صرف اسی صورت میں بھیجی جاتی ہے جب آپ خود اسے نئی پروڈکٹ کے ساتھ لگائیں (نیچے «حلال» دیکھیں)۔</p>
+  <h3>حلال</h3>
+  <p>اگر آپ خود کوئی پروڈکٹ یا غلطی کی اطلاع شامل کریں تو یہ ڈیٹا (نام، اجزاء، بارکوڈ، پیکنگ کی تصویر، اطلاع کا متن) ہمارے ڈیٹا بیس میں محفوظ ہوتا ہے اور غلطی کی اطلاعات کے علاوہ دوسرے صارفین کو نظر آتا ہے۔ نئی پروڈکٹس اور اطلاعات جانچ کے لیے منتظمین کو بھیجی جاتی ہیں (Telegram میں اطلاع)۔ آپ کا نام ان سے منسلک نہیں کیا جاتا۔</p>
+  <p>تصدیق شدہ مصنوعات کی فہرست میں نام سے تلاش: آپ کا لکھا ہوا نام صرف تلاش کے لیے ہمارے سرور (Supabase) کو بھیجا جاتا ہے اور محفوظ نہیں کیا جاتا۔ متن سے اجزاء کی جانچ اور آف لائن جانچ فون پر ہی ہوتی ہے — متن کہیں نہیں بھیجا جاتا۔</p>
+
+  <h3>جمعہ کا خطبہ</h3>
+  <p>«جمعہ» حصے میں خطبہ اور مکہ سے براہِ راست نشریات ایپ کے اندر YouTube پلیئر میں دکھائی جاتی ہیں۔ ویڈیو منتخب کرنے کے لیے ایپ ہمارے سرور کو صرف ایپ کی زبان بھیجتی ہے۔ دیکھتے وقت YouTube (Google) اپنی پرائیویسی پالیسی کے مطابق ڈیٹا حاصل کرتا ہے: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>۔ پلیئر صرف آپ کے دبانے پر کھلتا ہے۔</p>
+  <h3>قرآن</h3>
+  <p>متن، تراجم، تفسیر اور آڈیو quran.com، alquran.cloud، everyayah.com، quranenc.com اور islamic.network سے لوڈ ہوتے ہیں۔ انہیں صرف سورت یا آیت کا نمبر بھیجا جاتا ہے۔ ڈاؤن لوڈ شدہ مواد فون پر محفوظ (کیش) رہتا ہے۔</p>
+  <h3>فون پر ڈیٹا</h3>
+  <p>ترتیبات، زبان، تھیم، پسندیدہ اور کیش صرف فون پر محفوظ رہتے ہیں اور ایپ کے ساتھ حذف ہو جاتے ہیں۔</p>
+
+  <h2>2. ڈیٹا کہاں محفوظ ہوتا ہے</h2>
+  <p>ہمارا ڈیٹا بیس اور سرور فنکشنز Supabase پلیٹ فارم پر چلتے ہیں۔ ڈیٹا محفوظ کنکشن (HTTPS) کے ذریعے منتقل ہوتا ہے۔</p>
+  <h2>3. ڈیٹا حذف کرنا</h2>
+  <p>ایپ میں اکاؤنٹس نہیں ہیں۔ فون پر موجود ڈیٹا ایپ کے ساتھ حذف ہو جاتا ہے۔ «حلال» کے حصے میں خود بھیجا گیا ڈیٹا حذف کرانے کے لیے سپورٹ کو ای میل کریں۔ تفصیل <a href="delete-account.html#ur">ڈیٹا حذف کرنا</a> کے صفحے پر۔</p>
+  <h2>4. تبدیلیاں اور رابطہ</h2>
+  <p>اگر یہ پالیسی تبدیل ہوئی تو ہم یہ صفحہ اور اوپر دی گئی تاریخ اپ ڈیٹ کریں گے۔ سوالات: <a href="mailto:support@amalsawab.com">support@amalsawab.com</a>۔</p>
+  </section>
+
+  <hr>
+
+  <section id="bn" lang="bn">
+  <h1>গোপনীয়তা নীতি</h1>
+  <p class="muted">AmalSawab অ্যাপ (পূর্বে Juma App) (com.jumaapp.namaz)। ১৬ অক্টোবর ২০২৬ থেকে কার্যকর।</p>
+  <p>অ্যাপের ফিচারগুলো চালানোর জন্য যা দরকার, আমরা শুধু সেটুকুই সংগ্রহ করি। আমরা ডেটা বিক্রি করি না, বিজ্ঞাপন দেখাই না এবং কোনো বিজ্ঞাপন বা অ্যানালিটিক্স ট্র্যাকিং ব্যবহার করি না। বেনামী ত্রুটি রিপোর্টের বিবরণ নিচে দেওয়া আছে।</p>
+
+  <h2>১. অ্যাপ কোন ডেটা ব্যবহার করে</h2>
+  <p>নামাজের সময়, আজান, কিবলা, কুরআন, জিকির, দোয়া, হালাল এবং জুম্মা বিভাগ নিবন্ধন ছাড়াই কাজ করে।</p>
+  <h3>অবস্থান</h3>
+  <ul>
+    <li>নামাজের সময়, কিবলার দিক নির্ণয় এবং কাছের মসজিদ খোঁজার জন্য প্রয়োজন। অনুমতি না দিয়ে আপনি নিজে শহর বেছে নিতে পারেন।</li>
+    <li>স্থানাঙ্ক ফোনেই সংরক্ষিত থাকে। সময় হিসাব ও শহরের নাম নির্ণয়ের জন্য এগুলো নামাজের সময় হিসাবের সেবায় (স্থানীয় মুসলিম ধর্মীয় প্রশাসন ও AlAdhan), এবং Google Maps Geocoding ও OpenStreetMap (Nominatim, Overpass)-এ পাঠানো হয়। এই সেবাগুলো আপনার নাম ছাড়াই স্থানাঙ্ক পায়।</li>
+    <li>দিনে একবার অ্যাপ ব্যাকগ্রাউন্ডে বর্তমান অবস্থান অনুযায়ী নোটিফিকেশনের সময়সূচি হালনাগাদ করতে পারে। কোনো অবিরাম ট্র্যাকিং নেই এবং চলাচলের ইতিহাস সংরক্ষণ করা হয় না।</li>
+  </ul>
+  <h3>কাছের মসজিদ</h3>
+  <p>«জুম্মা» বিভাগে অ্যাপ কাছের মসজিদগুলো দেখায়। খোঁজা শুধু «কাছের মসজিদ খুঁজুন» বোতাম চাপলেই শুরু হয়। অ্যাপ প্রায় ১০০ মিটার পর্যন্ত গোল করা স্থানাঙ্ক আমাদের সার্ভারে (Supabase) পাঠায়, যা OpenStreetMap থেকে মসজিদের তালিকা আনে। আমাদের সার্ভার উপলব্ধ না থাকলে ফোন সরাসরি OpenStreetMap-এ যোগাযোগ করে (overpass-api.de বা বিকল্প overpass.private.coffee)। আপনার স্থানাঙ্ক আমাদের ডেটাবেসে সংরক্ষিত হয় না এবং কারও সঙ্গে যুক্ত করা হয় না — পরের খোঁজ দ্রুত করার জন্য শুধু OpenStreetMap-এর সর্বজনীন মসজিদ তালিকা সংরক্ষিত হয়। «পথ দেখুন» বোতাম আপনার ফোনে Google Maps বা 2GIS খোলে, আর «শেয়ার করুন» সাধারণ শেয়ার মেনু খোলে; এই কাজগুলো আপনি নিজেই করেন।</p>
+  <h3>বেনামী ত্রুটি রিপোর্ট</h3>
+  <p>সমস্যা দ্রুত খুঁজে ঠিক করার জন্য অ্যাপ Firebase Crashlytics (Google)-এর মাধ্যমে বেনামী ত্রুটি রিপোর্ট পাঠায়: যখন অ্যাপ হঠাৎ বন্ধ হয়ে যায় বা কোনো গুরুত্বপূর্ণ ফিচার কাজ করে না (যেমন নামাজের সময় লোড হয়নি বা আজান নির্ধারিত হয়নি)। রিপোর্টে থাকে ফোনের মডেল, Android ও অ্যাপের সংস্করণ, ইনস্টলেশনের একটি এলোমেলো নম্বর এবং ত্রুটির সংক্ষিপ্ত প্রযুক্তিগত বিবরণ। স্থানাঙ্ক, নাম, ইমেইল এবং আপনার লেখা কখনো রিপোর্টে থাকে না। রিপোর্ট বন্ধ করা যায়: «আরো → সেটিংস → অ্যাপ সম্পর্কে → বেনামী ত্রুটি রিপোর্ট পাঠান»।</p>
+  <h3>ভাষা</h3>
+  <p>প্রথমবার চালু করার সময় ফোনের সেটিংসে নির্ধারিত ভাষা ও অঞ্চল অনুযায়ী অ্যাপের ভাষা বেছে নেওয়া হয়। এটি ফোনেই নির্ধারিত হয় এবং কোথাও পাঠানো হয় না।</p>
+  <h3>নোটিফিকেশন</h3>
+  <p>নামাজের নোটিফিকেশন ও আজান, জুম্মার রিমাইন্ডার (সূরা আল-কাহফ, দোয়া) এবং মক্কা ও মদিনায় জুমার খুতবার রিমাইন্ডার ফোনেই নির্ধারিত হয় এবং সার্ভারে ডেটা পাঠানোর প্রয়োজন হয় না। জুম্মার রিমাইন্ডার ও খুতবার রিমাইন্ডার «সেটিংস»-এ বন্ধ করা যায়।</p>
+  <h3>ক্যামেরা</h3>
+  <p>ক্যামেরা «হালাল» বিভাগে ব্যবহৃত হয়: বারকোড স্ক্যান করতে এবং — আপনি নিজে নতুন পণ্য যোগ করলে — প্যাকেটের ছবি তুলতে। স্ক্যান করার সময় ছবি সংরক্ষিত বা পাঠানো হয় না: পণ্য খুঁজতে শুধু বারকোড নম্বর আমাদের সার্ভারে এবং উন্মুক্ত Open Food Facts ডেটাবেসে পাঠানো হয়। প্যাকেটের ছবি তখনই পাঠানো হয় যখন আপনি নিজে সেটি নতুন পণ্যের সঙ্গে যুক্ত করেন (নিচে «হালাল» দেখুন)।</p>
+  <h3>হালাল</h3>
+  <p>আপনি নিজে কোনো পণ্য বা ত্রুটির রিপোর্ট যোগ করলে সেই ডেটা (নাম, উপাদান, বারকোড, প্যাকেটের ছবি, রিপোর্টের লেখা) আমাদের ডেটাবেসে সংরক্ষিত হয় এবং ত্রুটির রিপোর্ট ছাড়া বাকিগুলো অন্য ব্যবহারকারীরা দেখতে পান। নতুন পণ্য ও রিপোর্ট যাচাইয়ের জন্য প্রশাসকদের কাছে পাঠানো হয় (Telegram-এ নোটিফিকেশন)। আপনার নাম এগুলোর সঙ্গে যুক্ত করা হয় না।</p>
+  <p>যাচাই করা পণ্যের তালিকায় নাম দিয়ে খোঁজা: আপনি যে নাম লেখেন তা শুধু খোঁজার জন্য আমাদের সার্ভারে (Supabase) পাঠানো হয় এবং সংরক্ষণ করা হয় না। লেখা দিয়ে উপাদান যাচাই ও অফলাইন যাচাই ফোনেই হয় — লেখা কোথাও পাঠানো হয় না।</p>
+
+  <h3>জুমার খুতবা</h3>
+  <p>«জুমা» অংশে খুতবা ও মক্কা থেকে সরাসরি সম্প্রচার অ্যাপের ভেতরের YouTube প্লেয়ারে দেখানো হয়। ভিডিও বাছাই করতে অ্যাপ আমাদের সার্ভারে শুধু অ্যাপের ভাষা পাঠায়। দেখার সময় YouTube (Google) নিজস্ব গোপনীয়তা নীতি অনুযায়ী তথ্য পায়: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>। আপনি চাপলে তবেই প্লেয়ার খোলে।</p>
+  <h3>কুরআন</h3>
+  <p>লেখা, অনুবাদ, তাফসির ও অডিও quran.com, alquran.cloud, everyayah.com, quranenc.com ও islamic.network থেকে লোড হয়। তাদের শুধু সূরা বা আয়াতের নম্বর পাঠানো হয়। ডাউনলোড করা বিষয়বস্তু ফোনে ক্যাশ হিসেবে থাকে।</p>
+  <h3>ফোনের ডেটা</h3>
+  <p>সেটিংস, ভাষা, থিম, প্রিয় তালিকা ও ক্যাশ শুধু ফোনে সংরক্ষিত থাকে এবং অ্যাপ মুছে ফেললে মুছে যায়।</p>
+
+  <h2>২. ডেটা কোথায় সংরক্ষিত হয়</h2>
+  <p>আমাদের ডেটাবেস ও সার্ভার ফাংশন Supabase প্ল্যাটফর্মে চলে। ডেটা সুরক্ষিত সংযোগে (HTTPS) পাঠানো হয়।</p>
+  <h2>৩. ডেটা মুছে ফেলা</h2>
+  <p>অ্যাপে কোনো অ্যাকাউন্ট নেই। ফোনের ডেটা অ্যাপের সঙ্গে মুছে যায়। «হালাল» বিভাগে আপনি নিজে যা পাঠিয়েছেন তা মুছতে সহায়তা ইমেইলে লিখুন। বিস্তারিত <a href="delete-account.html#bn">ডেটা মুছে ফেলা</a> পাতায়।</p>
+  <h2>৪. পরিবর্তন ও যোগাযোগ</h2>
+  <p>এই নীতি পরিবর্তন হলে আমরা এই পাতা ও উপরের তারিখ হালনাগাদ করব। প্রশ্ন: <a href="mailto:support@amalsawab.com">support@amalsawab.com</a>।</p>
+  </section>
+
+  <hr>
+
+  <section id="tr" lang="tr">
+  <h1>Gizlilik Politikası</h1>
+  <p class="muted">AmalSawab uygulaması (eski adıyla Juma App) (com.jumaapp.namaz). 16 Ekim 2026 tarihinden itibaren geçerlidir.</p>
+  <p>Yalnızca uygulamanın özelliklerinin çalışması için gerekenleri topluyoruz. Veri satmıyor, reklam göstermiyor ve reklam ya da analiz amaçlı izleme kullanmıyoruz. Anonim hata raporları aşağıda açıklanmıştır.</p>
+
+  <h2>1. Uygulamanın kullandığı veriler</h2>
+  <p>Namaz vakitleri, ezan, kıble, Kuran, zikirler, dualar, helal ve Cuma bölümü kayıt olmadan çalışır.</p>
+  <h3>Konum</h3>
+  <ul>
+    <li>Namaz vakitlerini ve kıble yönünü hesaplamak ve yakındaki camileri bulmak için gereklidir. İzin vermeden şehri elle seçebilirsiniz.</li>
+    <li>Koordinatlar telefonda saklanır. Vakitleri hesaplamak ve şehir adını belirlemek için namaz vakti hesaplama hizmetlerine (yerel Müslüman dini idareleri ve AlAdhan), ayrıca Google Maps Geocoding ve OpenStreetMap’e (Nominatim, Overpass) gönderilir. Bu hizmetler koordinatları adınız olmadan alır.</li>
+    <li>Uygulama günde bir kez arka planda bildirim çizelgesini mevcut konumunuza göre güncelleyebilir. Sürekli izleme yoktur ve konum geçmişi saklanmaz.</li>
+  </ul>
+  <h3>Yakındaki camiler</h3>
+  <p>«Cuma» bölümünde uygulama yakındaki camileri gösterir. Arama yalnızca «Yakındaki camileri bul» düğmesine basıldığında başlar. Uygulama yaklaşık 100 metreye yuvarlanmış koordinatları sunucumuza (Supabase) gönderir; sunucu da cami listesini OpenStreetMap’ten alır. Sunucumuz erişilemezse telefon doğrudan OpenStreetMap’e bağlanır (overpass-api.de veya yedek overpass.private.coffee). Koordinatlarınız veritabanımızda saklanmaz ve sizinle ilişkilendirilmez — sonraki aramalar daha hızlı olsun diye yalnızca OpenStreetMap’teki herkese açık cami listesi saklanır. «Yol tarifi» düğmesi telefonunuzda Google Maps veya 2GIS’i, «Paylaş» ise standart paylaşım menüsünü açar; bu işlemleri siz yaparsınız.</p>
+  <h3>Anonim hata raporları</h3>
+  <p>Sorunları daha hızlı bulup düzeltmek için uygulama, beklenmedik şekilde kapandığında veya önemli bir özellik çalışmadığında (örneğin namaz vakitleri yüklenemediğinde veya ezan planlanamadığında) Firebase Crashlytics (Google) üzerinden anonim hata raporları gönderir. Rapor; telefon modeli, Android ve uygulama sürümü, rastgele bir kurulum numarası ve hatanın kısa teknik açıklamasını içerir. Konum, ad, e-posta ve yazdıklarınız rapora asla eklenmez. Raporlar kapatılabilir: «Daha Fazla → Ayarlar → Uygulama hakkında → Anonim hata raporları gönder».</p>
+  <h3>Dil</h3>
+  <p>İlk açılışta uygulamanın dili, telefon ayarlarındaki dil ve bölgeye göre seçilir. Bu, telefonun kendisinde belirlenir ve hiçbir yere gönderilmez.</p>
+  <h3>Bildirimler</h3>
+  <p>Namaz bildirimleri ve ezan, Cuma hatırlatmaları (Kehf Sûresi, dua) ve Mekke ile Medine’deki Cuma hutbesi hatırlatması telefonun kendisinde planlanır ve sunucuya veri gönderilmesini gerektirmez. Cuma hatırlatmaları ve hutbe hatırlatması «Ayarlar»dan kapatılabilir.</p>
+  <h3>Kamera</h3>
+  <p>Kamera «Helal» bölümünde kullanılır: barkodu taramak ve — yeni bir ürünü kendiniz eklerseniz — ambalajın fotoğrafını çekmek için. Tarama sırasında görüntü saklanmaz ve gönderilmez: ürünü bulmak için yalnızca barkod numarası sunucumuza ve açık Open Food Facts veritabanına gönderilir. Ambalaj fotoğrafı yalnızca onu yeni bir ürüne kendiniz eklerseniz gönderilir (aşağıdaki «Helal» bölümüne bakın).</p>
+  <h3>Helal</h3>
+  <p>Bir ürün veya hata bildirimi kendiniz eklerseniz bu veriler (ad, içindekiler, barkod, ambalaj fotoğrafı, bildirim metni) veritabanımızda saklanır ve hata bildirimleri dışında diğer kullanıcılar tarafından görülebilir. Yeni ürünler ve bildirimler incelenmek üzere yöneticilere iletilir (Telegram bildirimi). Adınız bunlarla ilişkilendirilmez.</p>
+  <p>Doğrulanmış ürünler listesinde ada göre arama: yazdığınız ad yalnızca arama için sunucumuza (Supabase) gönderilir ve saklanmaz. Metinden içerik kontrolü ve çevrimdışı kontrol telefonun kendisinde yapılır — metin hiçbir yere gönderilmez.</p>
+
+  <h3>Cuma hutbesi</h3>
+  <p>«Cuma» bölümünde hutbe ve Mekke’den canlı yayın, uygulama içindeki YouTube oynatıcısında gösterilir. Videoyu seçmek için uygulama sunucumuza yalnızca uygulama dilini gönderir. İzlerken YouTube (Google), kendi gizlilik politikasına göre veri alır: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>. Oynatıcı yalnızca siz dokunduğunuzda açılır.</p>
+  <h3>Kuran</h3>
+  <p>Metin, mealler, tefsir ve ses kayıtları quran.com, alquran.cloud, everyayah.com, quranenc.com ve islamic.network hizmetlerinden yüklenir. Bu hizmetlere yalnızca sûre veya ayet numarası gönderilir. İndirilen içerik telefonda önbelleğe alınır.</p>
+  <h3>Telefondaki veriler</h3>
+  <p>Ayarlar, dil, tema, favoriler ve önbellek yalnızca telefonda saklanır ve uygulamayla birlikte silinir.</p>
+
+  <h2>2. Veriler nerede saklanır</h2>
+  <p>Veritabanımız ve sunucu fonksiyonlarımız Supabase platformunda çalışır. Veriler güvenli bağlantı (HTTPS) üzerinden iletilir.</p>
+  <h2>3. Verilerin silinmesi</h2>
+  <p>Uygulamada hesap yoktur. Telefondaki veriler uygulamayla birlikte silinir. «Helal» bölümüne kendiniz gönderdiklerinizi sildirmek için destek adresine e-posta gönderin. Ayrıntılar: <a href="delete-account.html#tr">Verilerin silinmesi</a> sayfası.</p>
+  <h2>4. Değişiklikler ve iletişim</h2>
+  <p>Bu politika değişirse bu sayfayı ve yukarıdaki tarihi güncelleyeceğiz. Sorular: <a href="mailto:support@amalsawab.com">support@amalsawab.com</a>.</p>
+  </section>
+</main>
+</body>
+</html>
