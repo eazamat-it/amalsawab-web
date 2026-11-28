@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Фоны AmalSawab</title>
+<!--
+  Управление фонами экрана намаза (2026-10-22).
+  Те же таблицы и хранилище, что использует приложение:
+    prayer_backgrounds (фото, до 5), prayer_solid_backgrounds (однотонные, до 10),
+    корзина prayer-backgrounds, папка admin/.
+  Права проверяет сама база (RLS): записывать может только администратор.
+  Ключ ниже — публичный (anon), он же стоит в приложении; секретов здесь нет.
+-->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<style>
+  :root { --bg:#0a1628; --card:#111d3c; --card2:#16244a; --text:#e8edf5; --muted:#9fb0c8; --accent:#c9a84c; --danger:#e5484d; --ok:#3fb68b; --line:#23345c; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.5 -apple-system,"Segoe UI",Roboto,Arial,sans-serif; }
+  main { max-width:820px; margin:0 auto; padding:24px 16px 64px; }
+  header { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:18px; }
+  h1 { font-size:24px; margin:0; }
+  .muted { color:var(--muted); font-size:13px; }
+  button { font:inherit; border:0; border-radius:10px; padding:9px 14px; cursor:pointer; background:var(--card2); color:var(--text); }
+  button:hover { filter:brightness(1.15); }
+  button:disabled { opacity:.45; cursor:default; filter:none; }
+  .primary { background:var(--accent); color:#1a1405; font-weight:600; }
+  .danger { background:transparent; color:var(--danger); border:1px solid #5a2a30; }
+  .card { background:var(--card); border-radius:14px; padding:18px; margin:14px 0; }
+  .tabs { display:flex; gap:8px; margin:6px 0 14px; }
+  .tabs button.on { background:var(--accent); color:#1a1405; font-weight:600; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:12px; }
+  .item { background:var(--card2); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; }
+  .item img { width:100%; aspect-ratio:9/16; object-fit:cover; background:#000; display:block; }
+  .item .body { padding:10px; display:flex; flex-direction:column; gap:8px; }
+  .item input { width:100%; font:inherit; background:#0d1830; color:var(--text); border:1px solid var(--line); border-radius:8px; padding:6px 8px; }
+  .row { display:flex; gap:6px; }
+  .row button { flex:1; padding:7px 0; }
+  .bar { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:12px; }
+  #toast { position:fixed; left:50%; bottom:24px; transform:translateX(-50%); background:#1f2f57; padding:10px 16px; border-radius:10px; display:none; max-width:90vw; }
+  #toast.err { background:#5a2a30; }
+  .center { text-align:center; padding:40px 10px; }
+  .hidden { display:none !important; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>Фоны AmalSawab</h1>
+      <div class="muted" id="who"></div>
+    </div>
+    <button id="logoutBtn" class="hidden">Выйти</button>
+  </header>
+
+  <!-- Вход -->
+  <div id="loginBox" class="card center hidden">
+    <p>Войдите аккаунтом администратора.</p>
+    <button id="loginBtn" class="primary">Войти через Google</button>
+  </div>
+
+  <!-- Нет прав -->
+  <div id="denyBox" class="card center hidden">
+    <p><b>Нет доступа.</b> Этот аккаунт не администратор.</p>
+  </div>
+
+  <!-- Загрузка -->
+  <div id="loadBox" class="card center">Загрузка…</div>
+
+  <!-- Управление -->
+  <div id="adminBox" class="hidden">
+    <div class="tabs">
+      <button data-tab="photo" class="on">Фото-фоны</button>
+      <button data-tab="solid">Однотонные</button>
+    </div>
+    <div class="card">
+      <div class="bar">
+        <button id="addBtn" class="primary">+ Добавить</button>
+        <span class="muted" id="countInfo"></span>
+        <input id="fileInput" type="file" accept="image/*" class="hidden">
+      </div>
+      <div id="grid" class="grid"></div>
+      <p class="muted" style="margin-top:14px">Изменения увидят пользователи при следующем открытии приложения с интернетом. Картинку лучше вертикальную (примерно 1080×1920): она автоматически уменьшится и сохранится в JPG.</p>
+    </div>
+  </div>
+</main>
+<div id="toast"></div>
+
+<script>
+const SUPABASE_URL  = 'https://qvrjuamdjwlhslijxrua.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF2cmp1YW1kandsaHNsaWp4cnVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1Mzg0MjIsImV4cCI6MjA5MzExNDQyMn0.UHvO7k3rnVGRxsyGrCt_lD_NUx77TVEQD1zg-6RQ378';
+const BUCKET = 'prayer-backgrounds';
+const KINDS = {
+  photo: { table: 'prayer_backgrounds',       max: 5,  label: 'фото-фонов' },
+  solid: { table: 'prayer_solid_backgrounds', max: 10, label: 'однотонных фонов' },
+};
+
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON, {
+  auth: { flowType: 'pkce', detectSessionInUrl: true, persistSession: true },
+});
+
+const $ = (id) => document.getElementById(id);
+let kind = 'photo';
+let items = [];
+let busy = false;
+
+function show(id) {
+  for (const b of ['loginBox', 'denyBox', 'loadBox', 'adminBox']) $(b).classList.toggle('hidden', b !== id);
+}
+function toast(msg, err) {
+  const t = $('toast'); t.textContent = msg; t.className = err ? 'err' : ''; t.style.display = 'block';
+  clearTimeout(toast._t); toast._t = setTimeout(() => (t.style.display = 'none'), err ? 6000 : 2500);
+}
+function setBusy(v) {
+  busy = v;
+  document.querySelectorAll('#adminBox button').forEach((b) => (b.disabled = v));
+  if (!v) updateAddBtn();
+}
+function updateAddBtn() {
+  const k = KINDS[kind];
+  $('addBtn').disabled = busy || items.length >= k.max;
+  $('countInfo').textContent = `${items.length} из ${k.max} ${k.label}`;
+}
+
+// ── Вход ──────────────────────────────────────────────────────
+$('loginBtn').onclick = () => {
+  sb.auth.signInWithOAuth({
+    provider: 'google',
+    options: { redirectTo: location.origin + location.pathname },
+  });
+};
+$('logoutBtn').onclick = async () => { await sb.auth.signOut(); location.reload(); };
+
+async function start() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) { show('loginBox'); return; }
+  $('logoutBtn').classList.remove('hidden');
+  $('who').textContent = session.user?.email || '';
+  const { data: prof } = await sb.from('profiles').select('is_admin').eq('id', session.user.id).maybeSingle();
+  if (!prof?.is_admin) { show('denyBox'); return; }
+  show('adminBox');
+  await load();
+}
+
+// ── Список ────────────────────────────────────────────────────
+async function load() {
+  const { data, error } = await sb.from(KINDS[kind].table).select('*')
+    .order('sort_order', { ascending: true }).order('created_at', { ascending: true });
+  if (error) { toast('Не удалось загрузить список: ' + error.message, true); return; }
+  items = data || [];
+  render();
+}
+
+function render() {
+  const g = $('grid'); g.innerHTML = '';
+  items.forEach((it, i) => {
+    const el = document.createElement('div'); el.className = 'item';
+    const img = document.createElement('img'); img.src = it.url; img.alt = ''; img.loading = 'lazy';
+    const body = document.createElement('div'); body.className = 'body';
+    const name = document.createElement('input'); name.value = it.name || ''; name.placeholder = 'Название';
+    name.onchange = () => rename(it, name.value);
+    const row = document.createElement('div'); row.className = 'row';
+    const up = document.createElement('button'); up.textContent = '←'; up.title = 'Раньше'; up.disabled = i === 0; up.onclick = () => move(i, -1);
+    const down = document.createElement('button'); down.textContent = '→'; down.title = 'Позже'; down.disabled = i === items.length - 1; down.onclick = () => move(i, 1);
+    row.append(up, down);
+    const del = document.createElement('button'); del.className = 'danger'; del.textContent = 'Удалить'; del.onclick = () => remove(it);
+    body.append(name, row, del); el.append(img, body); g.append(el);
+  });
+  if (!items.length) g.innerHTML = '<div class="muted">Пока нет ни одного фона.</div>';
+  updateAddBtn();
+}
+
+// ── Вкладки ───────────────────────────────────────────────────
+document.querySelectorAll('.tabs button').forEach((b) => {
+  b.onclick = async () => {
+    if (busy) return;
+    kind = b.dataset.tab;
+    document.querySelectorAll('.tabs button').forEach((x) => x.classList.toggle('on', x === b));
+    await load();
+  };
+});
+
+// ── Добавить ──────────────────────────────────────────────────
+$('addBtn').onclick = () => { $('fileInput').value = ''; $('fileInput').click(); };
+$('fileInput').onchange = async (e) => {
+  const file = e.target.files?.[0];
+  if (!file) return;
+  const k = KINDS[kind];
+  if (items.length >= k.max) { toast(`Уже ${k.max} — сначала удалите лишний`, true); return; }
+  setBusy(true);
+  try {
+    const blob = await toJpeg(file, 1920, 0.86);
+    const path = `admin/bg_${Date.now()}.jpg`;
+    const up = await sb.storage.from(BUCKET).upload(path, blob, { contentType: 'image/jpeg', upsert: false });
+    if (up.error) throw new Error('Файл не загрузился: ' + up.error.message);
+    const url = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${path}`;
+    const nextOrder = items.length ? Math.max(...items.map((x) => x.sort_order || 0)) + 1 : 0;
+    const baseName = file.name.replace(/\.[^.]+$/, '').slice(0, 40) || 'Фон';
+    const ins = await sb.from(k.table).insert({ name: baseName, url, storage_path: path, sort_order: nextOrder }).select();
+    if (ins.error || !ins.data?.length) {
+      await sb.storage.from(BUCKET).remove([path]); // запись не создалась — файл не оставляем
+      throw new Error('Запись не сохранилась: ' + (ins.error?.message || 'нет прав'));
+    }
+    toast('Фон добавлен');
+    await load();
+  } catch (err) {
+    toast(err.message || String(err), true);
+  } finally { setBusy(false); }
+};
+
+// Уменьшить и сохранить в JPG (длинная сторона — не больше maxSide)
+function toJpeg(file, maxSide, quality) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      const s = Math.min(1, maxSide / Math.max(img.width, img.height));
+      const c = document.createElement('canvas');
+      c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      c.toBlob((b) => (b ? resolve(b) : reject(new Error('Не удалось обработать картинку'))), 'image/jpeg', quality);
+      URL.revokeObjectURL(img.src);
+    };
+    img.onerror = () => reject(new Error('Это не картинка или формат не поддерживается'));
+    img.src = URL.createObjectURL(file);
+  });
+}
+
+// ── Переименовать ─────────────────────────────────────────────
+async function rename(it, name) {
+  name = (name || '').trim() || 'Фон';
+  const { data, error } = await sb.from(KINDS[kind].table).update({ name }).eq('id', it.id).select();
+  if (error || !data?.length) toast('Не удалось переименовать', true); else toast('Сохранено');
+}
+
+// ── Порядок ───────────────────────────────────────────────────
+async function move(i, dir) {
+  const j = i + dir; if (j < 0 || j >= items.length) return;
+  setBusy(true);
+  try {
+    const reordered = items.slice(); [reordered[i], reordered[j]] = [reordered[j], reordered[i]];
+    for (let n = 0; n < reordered.length; n++) {
+      if (reordered[n].sort_order === n) continue;
+      const { data, error } = await sb.from(KINDS[kind].table).update({ sort_order: n }).eq('id', reordered[n].id).select();
+      if (error || !data?.length) throw new Error('Не удалось изменить порядок');
+    }
+    await load();
+  } catch (err) { toast(err.message, true); await load(); }
+  finally { setBusy(false); }
+}
+
+// ── Удалить: сначала запись (фон сразу исчезает из списка у всех), потом файл ──
+async function remove(it) {
+  if (!confirm(`Удалить фон «${it.name || ''}»?`)) return;
+  setBusy(true);
+  try {
+    const { data, error } = await sb.from(KINDS[kind].table).delete().eq('id', it.id).select();
+    if (error || !data?.length) throw new Error('Не удалось удалить (нет прав?)');
+    if (it.storage_path) await sb.storage.from(BUCKET).remove([it.storage_path]);
+    toast('Удалено');
+    await load();
+  } catch (err) { toast(err.message, true); }
+  finally { setBusy(false); }
+}
+
+sb.auth.onAuthStateChange((ev) => { if (ev === 'SIGNED_IN' && !$('adminBox').classList.contains('hidden')) return; });
+start().catch((e) => { show('loginBox'); toast('Ошибка: ' + (e.message || e), true); });
+</script>
+</body>
+</html>
